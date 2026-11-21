@@ -1572,8 +1572,12 @@ app.post('/api/admin/purge-catalog', requireAdmin, (req, res) => {
 
 const DEFAULT_OTA_RAW_BASE = 'https://gitlab.com/itclubfayoum/bytetopia-repo/-/raw/main';
 // Fallback raw bases (older installs may carry stale repo paths) — tried in order until one serves a valid manifest.
+// Ordered by what actually answers. The old list pointed at two GitLab paths
+// and one GitHub org that do not exist, so a rate-limited GitLab left the
+// updater with nothing usable and the user saw a bare "update failed".
 const OTA_RAW_BASE_FALLBACKS = [
   DEFAULT_OTA_RAW_BASE,
+  'https://raw.githubusercontent.com/orlozuroffo-byte/bytetopia-ota/main',
   'https://gitlab.com/itclubfayoum/oddware-repo/-/raw/main',
   'https://gitlab.com/itclubfayoum/bytopia-repo/-/raw/main'
 ];
