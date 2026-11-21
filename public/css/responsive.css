@@ -1,0 +1,595 @@
+/* =========================================================================
+   RESPONSIVE LAYER — ByteTopia / بايت توبيا
+   -------------------------------------------------------------------------
+   This file targets the class names the app ACTUALLY renders. Both pages are
+   built almost entirely from JavaScript, so a selector that is not present in
+   app.js / cpanel.js does nothing at all. Every class written here was taken
+   from those two files.
+
+   Loaded last on both pages, so it wins on source order without needing
+   !important everywhere. Where a rule must beat an inline style written by JS,
+   !important is used deliberately and marked.
+   ========================================================================= */
+
+/* ---------- 0. fluid scale --------------------------------------------- */
+:root {
+  --r-gutter: clamp(12px, 2.2vw, 28px);
+  --r-radius: clamp(10px, 1.1vw, 18px);
+  --r-text-xs: clamp(0.68rem, 0.63rem + 0.22vw, 0.78rem);
+  --r-text-sm: clamp(0.78rem, 0.72rem + 0.26vw, 0.9rem);
+  --r-text-md: clamp(0.88rem, 0.82rem + 0.3vw, 1rem);
+  --r-text-lg: clamp(1rem, 0.9rem + 0.5vw, 1.24rem);
+  --r-text-xl: clamp(1.16rem, 0.98rem + 0.9vw, 1.7rem);
+  --r-text-2xl: clamp(1.4rem, 1.05rem + 1.7vw, 2.4rem);
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* Nothing in a flex/grid child may force the page wider than the viewport. */
+*,
+*::before,
+*::after {
+  min-width: 0;
+}
+
+/* Long unbroken strings (onion URLs, sha256, repo links) must wrap, not push. */
+.mono,
+.sha-box,
+.node-endpoint,
+.brand-code,
+.version-pill {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+img,
+video,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ---------- 1. storefront ------------------------------------------------ */
+
+.shell {
+  width: 100%;
+  max-width: 1240px;
+  margin-inline: auto;
+  padding-inline: var(--r-gutter);
+}
+
+.site-header .header-inner,
+.header-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  align-items: center;
+}
+
+.brand-text {
+  min-width: 0;
+}
+
+.brand-name {
+  font-size: var(--r-text-lg);
+  line-height: 1.2;
+}
+
+.brand-sub {
+  font-size: var(--r-text-xs);
+  overflow-wrap: anywhere;
+}
+
+.header-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-inline-start: auto;
+}
+
+/* Hero: two columns on desktop, one on narrow screens. */
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: clamp(16px, 3vw, 40px);
+  align-items: center;
+}
+
+.hero-title {
+  font-size: var(--r-text-2xl);
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+}
+
+.hero-bio {
+  font-size: var(--r-text-md);
+  max-width: 62ch;
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr));
+  gap: clamp(8px, 1.4vw, 16px);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.stat-num {
+  font-size: var(--r-text-xl);
+}
+
+.stat-label {
+  font-size: var(--r-text-xs);
+}
+
+/* Card grids: fluid from the start so they never overflow. */
+.catalog-grid,
+.topics-grid,
+.nodes-grid,
+.matrix-grid,
+.theme-skin-grid,
+.reqs-grid,
+.md-toolbar {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
+  gap: clamp(12px, 1.8vw, 22px);
+}
+
+.app-card,
+.topic-card,
+.node-card,
+.cp-card,
+.theme-skin-card,
+.shot-card-item {
+  min-width: 0;
+}
+
+.card-title {
+  font-size: var(--r-text-lg);
+  overflow-wrap: anywhere;
+}
+
+.card-tagline {
+  font-size: var(--r-text-sm);
+}
+
+.card-cover {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+/* Filter bar: 3 fixed columns in style.css — collapse in stages. */
+.filter-inputs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(190px, 100%), 1fr));
+  gap: 10px;
+}
+
+.filter-inputs > * {
+  min-width: 0;
+}
+
+.filter-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.tab-chip {
+  flex: 0 0 auto;
+  font-size: var(--r-text-sm);
+}
+
+.search-input,
+.form-input,
+.select-box {
+  width: 100%;
+  max-width: 100%;
+  font-size: 16px; /* stops iOS from zooming the whole page on focus */
+}
+
+/* Detail view */
+.detail-view {
+  max-width: 100%;
+}
+
+.detail-hero-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: clamp(14px, 2.6vw, 32px);
+}
+
+.detail-title {
+  font-size: var(--r-text-2xl);
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+}
+
+.specs-two-col,
+.plat-meta-list,
+.auth-tabs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr));
+  gap: 10px;
+}
+
+.platform-dock,
+.thumbs-row,
+.spotlight-cta-row,
+.card-actions,
+.card-plats-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+/* Footer */
+.site-footer .footer-inner,
+.footer-inner,
+.footer-main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 22px;
+  align-items: flex-start;
+}
+
+.footer-rights,
+.footer-note {
+  font-size: var(--r-text-sm);
+  overflow-wrap: anywhere;
+}
+
+/* Tables always scroll inside their own box, never widen the page. */
+.cp-table,
+.table-wrap,
+.cp-table-wrap {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.cp-table table,
+.table-wrap table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--r-text-sm);
+}
+
+/* Modals: never taller than the viewport, always scrollable. */
+.modal-backdrop {
+  padding: clamp(8px, 2vw, 24px);
+}
+
+.modal-window,
+.modal-content {
+  width: min(760px, 100%);
+  max-width: 100%;
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.modal-body {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.media-box,
+.video-showcase-box,
+.spotlight-media {
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.media-box img,
+.video-showcase-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 980px) {
+  .hero-grid,
+  .detail-hero-card {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .hero-grid {
+    gap: 18px;
+  }
+}
+
+@media (max-width: 720px) {
+  .site-header .header-inner,
+  .header-inner {
+    flex-wrap: wrap;
+  }
+  /* Icon-only header buttons on phones; the label is what makes it too wide. */
+  .header-controls .label,
+  .header-controls .btn span:not(.icon) {
+    display: none;
+  }
+  .hero-title,
+  .detail-title {
+    font-size: clamp(1.25rem, 5.6vw, 1.75rem);
+  }
+  .section-title {
+    font-size: var(--r-text-xl);
+  }
+  .footer-inner,
+  .footer-main {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 420px) {
+  :root {
+    --r-gutter: 12px;
+  }
+  .brand-sub {
+    display: none;
+  }
+  .catalog-grid,
+  .topics-grid,
+  .nodes-grid,
+  .matrix-grid,
+  .theme-skin-grid,
+  .reqs-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .btn {
+    padding-inline: 12px;
+  }
+}
+
+/* =========================================================================
+   2. Control panel
+   The whole panel is rendered by cpanel.js into #cpanelRoot. The real
+   structure is .cp-layout > .cp-sidebar + .cp-main, with .cp-topbar and the
+   .cp-workspace grid inside .cp-main. cpanel.css pins the sidebar at a fixed
+   268px column and makes it 100vh sticky, which is why the panel looked
+   oversized and clipped on anything smaller than a laptop.
+   ========================================================================= */
+
+/* Below 1024px the sidebar becomes a horizontal strip on top. */
+@media (max-width: 1024px) {
+  .cp-layout {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+    min-height: 100vh;
+  }
+
+  .cp-sidebar {
+    position: static;
+    height: auto;
+    max-height: none;
+    width: 100%;
+    overflow: visible;
+    border-inline-end: 0;
+    border-block-end: 1px solid var(--border-base);
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    padding: 10px var(--r-gutter);
+  }
+
+  .cp-brand-box {
+    padding: 0;
+    flex: 0 0 auto;
+  }
+
+  /* The nav turns into a scrollable chip row. */
+  .cp-nav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 6px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    width: 100%;
+    padding-bottom: 2px;
+  }
+
+  .cp-nav-btn {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    font-size: var(--r-text-sm);
+    padding: 8px 12px;
+  }
+
+  .cp-side-footer {
+    display: none;
+  }
+
+  .cp-main {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .cp-topbar {
+    position: static;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 10px var(--r-gutter);
+  }
+}
+
+/* The workspace grid inside the panel. */
+.cp-workspace {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr));
+  gap: clamp(12px, 1.6vw, 20px);
+  min-width: 0;
+}
+
+.cp-card {
+  min-width: 0;
+  max-width: 100%;
+  padding: clamp(12px, 1.6vw, 20px);
+  border-radius: var(--r-radius);
+}
+
+.cp-card-title {
+  font-size: var(--r-text-lg);
+  overflow-wrap: anywhere;
+}
+
+.cp-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr));
+  gap: 10px;
+}
+
+.cp-kpi-val {
+  font-size: var(--r-text-xl);
+}
+
+.cp-login-wrap {
+  padding: var(--r-gutter);
+}
+
+.cp-login-card {
+  width: min(430px, 100%);
+  max-width: 100%;
+}
+
+/* Form controls: 16px stops the iOS zoom-on-focus that makes the panel feel
+   like it "jumps" on a phone. */
+.brutal-input,
+.brutal-select,
+.form-input,
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  max-width: 100%;
+  font-size: 16px;
+  min-height: 40px;
+}
+
+.form-grid,
+.specs-two-col,
+.req-row,
+.ota-repo-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(210px, 100%), 1fr));
+  gap: 10px;
+}
+
+.form-field {
+  min-width: 0;
+}
+
+textarea,
+.brutal-input[type="text"] {
+  max-width: 100%;
+}
+
+/* Buttons must never be wider than their container. */
+.brutal-btn,
+.btn {
+  max-width: 100%;
+  font-size: var(--r-text-sm);
+  overflow-wrap: anywhere;
+}
+
+.md-toolbar,
+.md-tool-btn,
+.upload-action-btn,
+.plat-dock-btn,
+.video-btn {
+  max-width: 100%;
+}
+
+.media-studio-grid,
+.shot-gallery-grid,
+.thumbs-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(150px, 100%), 1fr));
+  gap: 10px;
+}
+
+.sha-box,
+.node-endpoint,
+.ota-repo-row {
+  max-width: 100%;
+}
+
+@media (max-width: 720px) {
+  .cp-workspace,
+  .cp-kpi-grid,
+  .form-grid,
+  .specs-two-col,
+  .req-row,
+  .ota-repo-row,
+  .media-studio-grid,
+  .shot-gallery-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .cp-card {
+    padding: 12px;
+  }
+  .cp-topbar {
+    gap: 6px;
+  }
+  .cp-table table,
+  .table-wrap table {
+    font-size: 0.76rem;
+  }
+}
+
+/* ---------- 3. touch + motion ------------------------------------------ */
+@media (hover: none) and (pointer: coarse) {
+  .brutal-btn,
+  .btn,
+  .cp-nav-btn,
+  .tab-chip,
+  .md-tool-btn,
+  .upload-action-btn,
+  .plat-dock-btn,
+  .video-btn,
+  .auth-tab-btn {
+    min-height: 44px;
+  }
+  .brutal-input,
+  .brutal-select,
+  .form-input,
+  .select-box {
+    min-height: 44px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
