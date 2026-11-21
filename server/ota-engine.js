@@ -27,14 +27,15 @@ const RAW_SHAPES = (ownerRepo, branch) => [
   `https://gitlab.com/api/v4/projects/${encodeURIComponent(ownerRepo)}/repository/files/%s/raw?ref=${branch}`
 ];
 
+// Ordered by measured latency and reliability, not by ownership. On a cold
+// install the updater issues ~49 sequential requests; GitLab answers the
+// second half of them with 429 and then advertises retry-after values in the
+// minutes, which is exactly what made "update failed" routine. The mirror is
+// byte-identical, served through a CDN, and every downloaded file is still
+// verified against the manifest hash — so a mirror can never smuggle content.
 const DEFAULT_SOURCES = [
-  'https://gitlab.com/itclubfayoum/bytetopia-repo/-/raw/main',
-  // GitHub mirror of the same tree. GitLab rate-limits aggressively (~100
-  // requests/min/IP, and a first OTA needs ~49), so a single-source update
-  // fails routinely. The mirror is byte-identical and every download is
-  // still verified against the manifest hash, so a mirror cannot smuggle
-  // content in.
   'https://raw.githubusercontent.com/orlozuroffo-byte/bytetopia-ota/main',
+  'https://gitlab.com/itclubfayoum/bytetopia-repo/-/raw/main',
   'https://raw.githubusercontent.com/itclubfayoum/bytetopia-repo/main'
 ];
 
