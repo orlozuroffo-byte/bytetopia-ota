@@ -1,0 +1,212 @@
+{
+  "slug": "siraj-quran",
+  "code": "SRJ-QURAN",
+  "category": "education",
+  "version": "v4.1.4",
+  "channel": "stable",
+  "featured": true,
+  "status": "published",
+  "releaseDate": "2026-11-17",
+  "license": {
+    "ar": "حقوق محفوظة — رخصة خاصة (Siraj Proprietary)",
+    "en": "Proprietary License"
+  },
+  "title": {
+    "ar": "سراج — قرآن كريم",
+    "en": "Siraj — Quran Kareem"
+  },
+  "tagline": {
+    "ar": "مصحف عربي متعدد المنصات للقراءة والتلاوة والتفسير والتدبر والحفظ والمتابعة اليومية — 6,236 آية و114 سورة برسم عثماني.",
+    "en": "A cross-platform Arabic Quran app for reading, recitation, tafsir, reflection, memorization and daily progress — 6,236 ayat, 114 surahs."
+  },
+  "description": {
+    "ar": "سراج مصحف عربي كامل يعمل دون اتصال بمعظم محتواه: 6,236 آية و114 سورة و604 صفحات بالرسم العثماني والنص المبسط، مع 17 قارئًا لحفص وتشغيل من آية وتكرار وتنزيل للاستماع دون إنترنت. يضم 78 خيار تفسير مدقق المنشأ والحقوق مع بحث ومعاني الكلمات وترجمات، ومسارًا مستقلًا لتعلم التجويد (فهم وتمييز وتطبيق) بخطة محلية تكيفية تبدأ من الأضعف مع مراجعة متباعدة ومؤشرات إتقان. أدوات المتابعة تشمل الحفظ والورد والختمة والأذكار والعلامات والتظليل والإحصاءات والتذكير الاختياري. الواجهة عربية RTL بالكامل مع وضعين فاتح وداكن وأربعة خطوط عربية وتجربة متجاوبة للهاتف والتابلت وسطح المكتب. لا يطلب حسابًا إلزاميًا، وبيانات القراءة الأساسية تبقى على جهازك. التحديثات محكومة ببوابة إصدار وبصمات SHA-256 وتوقيع Ed25519 لسطح المكتب، مع SBOM وإصدارات غير قابلة للتغيير.",
+    "en": "Siraj is a complete offline-first Arabic Quran application: 6,236 ayat across 114 surahs and 604 pages in Uthmani and simplified scripts, with 17 Hafs reciters supporting start-from-ayah, looping and offline downloads. It ships 78 provenance- and rights-reviewed tafsir sources with search, word meanings and translations, plus a standalone tajweed learning path (understand, distinguish, apply) with an adaptive local plan, spaced review and mastery indicators. Daily tools cover memorization, wird, khatmah, adhkar, bookmarks, highlights and statistics. The interface is fully Arabic RTL with light and dark modes, four Arabic typefaces and a layout that adapts to phone, tablet and desktop. No account is required and core reading data stays on the device. Releases are gated with SHA-256 hashes, Ed25519 signatures for desktop, SBOM and immutable GitHub Releases."
+  },
+  "cover": "/assets/covers/siraj-quran.png",
+  "screenshots": [],
+  "techStack": "Python • Qt — Android APK • Windows Portable • Linux AppImage",
+  "tags": {
+    "ar": [
+      "قرآن",
+      "مصحف",
+      "تفسير",
+      "تجويد",
+      "حفظ",
+      "تلاوات",
+      "أذكار",
+      "إسلامي"
+    ],
+    "en": [
+      "Quran",
+      "Mushaf",
+      "Tafsir",
+      "Tajweed",
+      "Memorization",
+      "Recitation",
+      "Adhkar",
+      "Islamic"
+    ]
+  },
+  "highlights": {
+    "ar": [
+      "6,236 آية • 114 سورة • 604 صفحات بالرسم العثماني والنص المبسط",
+      "17 قارئًا لحفص — تشغيل من آية، تكرار، وتنزيل للاستماع دون إنترنت",
+      "78 مصدر تفسير مدقق المنشأ والحقوق + بحث ومعاني كلمات وترجمات",
+      "مسار تجويد مستقل: فهم وتمييز وتطبيق مع خطة محلية تكيفية",
+      "حفظ وورد وختمة وأذكار وعلامات وإحصاءات وتذكير اختياري",
+      "واجهة عربية RTL • وضعان فاتح وداكن • أربعة خطوط • متجاوبة لكل الشاشات",
+      "لا حساب إلزامي — بيانات القراءة تبقى محلية على جهازك",
+      "تحديثات موقّعة بـ Ed25519 وبصمات SHA-256 مع SBOM"
+    ],
+    "en": [
+      "6,236 ayat • 114 surahs • 604 pages in Uthmani and simplified scripts",
+      "17 Hafs reciters — start-from-ayah, looping, offline downloads",
+      "78 provenance-reviewed tafsir sources with search, meanings and translations",
+      "Standalone tajweed path: understand, distinguish, apply with an adaptive local plan",
+      "Memorization, wird, khatmah, adhkar, bookmarks, highlights and statistics",
+      "Full Arabic RTL UI • light and dark • four typefaces • responsive to every screen",
+      "No required account — reading data stays on your device",
+      "Ed25519-signed releases with SHA-256 hashes and SBOM"
+    ]
+  },
+  "changelog": {
+    "ar": [
+      {
+        "version": "v4.1.4",
+        "date": "2026-11-17",
+        "notes": "الإصدار الثابت لويندوز: ترقيع موقّع فوق النسخة المحمولة 4.1.1."
+      },
+      {
+        "version": "v4.1.3",
+        "date": "2026-11-17",
+        "notes": "ترقيع لينكس موقّع فوق AppImage 4.1.1."
+      },
+      {
+        "version": "v4.1.1",
+        "date": "2026-10-28",
+        "notes": "النسخة الأساسية لسطح المكتب: Windows Portable وLinux AppImage."
+      },
+      {
+        "version": "v1.12.0",
+        "date": "2026-11-17",
+        "notes": "أحدث إصدار أندرويد — بناء 182."
+      }
+    ],
+    "en": [
+      {
+        "version": "v4.1.4",
+        "date": "2026-11-17",
+        "notes": "Stable Windows release: signed patch over the 4.1.1 portable baseline."
+      },
+      {
+        "version": "v4.1.3",
+        "date": "2026-11-17",
+        "notes": "Signed Linux patch over the 4.1.1 AppImage baseline."
+      },
+      {
+        "version": "v4.1.1",
+        "date": "2026-10-28",
+        "notes": "Desktop baseline: Windows Portable and Linux AppImage."
+      },
+      {
+        "version": "v1.12.0",
+        "date": "2026-11-17",
+        "notes": "Latest Android build — 182."
+      }
+    ]
+  },
+  "requirements": {
+    "ar": {
+      "windows": "ويندوز 10/11 (64-bit) — النسخة المحمولة لا تحتاج تثبيتًا",
+      "linux": "توزيعات لينكس 64-bit — AppImage يعمل مباشرة بعد إعطاء صلاحية التنفيذ",
+      "android": "أندرويد — تثبيت من APK (فعّل «تثبيت من مصادر غير معروفة»)"
+    },
+    "en": {
+      "windows": "Windows 10/11 (64-bit) — portable, no installation needed",
+      "linux": "64-bit Linux — run the AppImage after chmod +x",
+      "android": "Android — install from APK (enable install from unknown sources)"
+    }
+  },
+  "optionalDemo": {
+    "enabled": false,
+    "url": ""
+  },
+  "extraLinks": [
+    {
+      "label": "صفحة كل الإصدارات على GitHub (63 إصدارًا)",
+      "url": "https://github.com/mosalah30688-gif/quran/releases",
+      "size": ""
+    },
+    {
+      "label": "المستودع على GitHub",
+      "url": "https://github.com/mosalah30688-gif/quran",
+      "size": ""
+    },
+    {
+      "label": "ملفات التحقق SBOM وSHA256SUMS",
+      "url": "https://github.com/mosalah30688-gif/quran/releases/download/siraj-android-v1.12.0-b182/SHA256SUMS.txt",
+      "size": "91 B"
+    }
+  ],
+  "platforms": {
+    "windows": {
+      "available": true,
+      "version": "4.1.4",
+      "format": "Portable ZIP (x64)",
+      "arch": "x64",
+      "size": "~674 MB (+ ترقيع 4.1.4 بحجم 2.8 MB)",
+      "externalUrl": "https://github.com/mosalah30688-gif/quran/releases/download/siraj-windows-v4.1.1/Siraj-Quran-4.1.1-windows-portable-x64.zip",
+      "sha256": "",
+      "notes": {
+        "ar": "الملف لا يحمل توقيع Authenticode من مايكروسوفت، لذا قد يظهر تحذير SmartScreen — الأصالة متحقَّقة بـ Ed25519 وSHA-256. ثبّت الترقيع 4.1.4 بعد فك ضغط النسخة المحمولة.",
+        "en": "Not Authenticode-signed, so SmartScreen may warn. Authenticity is enforced via Ed25519 and SHA-256. Apply the 4.1.4 patch after extracting the portable build."
+      },
+      "patch": {
+        "version": "4.1.4",
+        "url": "https://github.com/mosalah30688-gif/quran/releases/download/siraj-windows-patch-v4.1.4/Siraj-Quran-4.1.4-windows.sirajpatch",
+        "size": "2,816,294"
+      }
+    },
+    "linux": {
+      "available": true,
+      "version": "4.1.3",
+      "format": "AppImage (x86_64)",
+      "arch": "x86_64",
+      "size": "~669 MB (+ ترقيع 4.1.3 بحجم 2.4 MB)",
+      "externalUrl": "https://github.com/mosalah30688-gif/quran/releases/download/siraj-linux-test-v4.1.1/Siraj-Quran-4.1.1-linux-x86_64.AppImage",
+      "sha256": "",
+      "notes": {
+        "ar": "نزّل الـ AppImage ثم: chmod +x Siraj-Quran-4.1.1-linux-x86_64.AppImage وشغّله. طابق الترقيع 4.1.3 بعده.",
+        "en": "Download, then chmod +x the AppImage and run it. Apply the 4.1.3 patch afterwards."
+      },
+      "patch": {
+        "version": "4.1.3",
+        "url": "https://github.com/mosalah30688-gif/quran/releases/download/siraj-linux-patch-v4.1.3/Siraj-Quran-4.1.3-linux.sirajpatch",
+        "size": "2,403,198"
+      }
+    },
+    "android": {
+      "available": true,
+      "version": "1.12.0",
+      "format": "APK (موقّع)",
+      "arch": "arm64 / universal",
+      "size": "~33 MB",
+      "externalUrl": "https://github.com/mosalah30688-gif/quran/releases/download/siraj-android-v1.12.0-b182/Siraj-Android-1.12.0.apk",
+      "sha256": "",
+      "notes": {
+        "ar": "APK كامل موقّع — فعّل «تثبيت من مصادر غير معروفة» في إعدادات أندرويد قبل التثبيت.",
+        "en": "Signed full APK — enable 'install from unknown sources' in Android settings first."
+      }
+    },
+    "macos": {
+      "available": false
+    },
+    "xbox": {
+      "available": false
+    },
+    "ios": {
+      "available": false
+    }
+  }
+}
