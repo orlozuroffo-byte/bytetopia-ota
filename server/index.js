@@ -1570,14 +1570,15 @@ app.post('/api/admin/purge-catalog', requireAdmin, (req, res) => {
 
 // ================= CRYPTOGRAPHIC SHA-256 REPOSITORY OTA UPDATER =================
 
-const DEFAULT_OTA_RAW_BASE = 'https://gitlab.com/itclubfayoum/bytetopia-repo/-/raw/main';
+const DEFAULT_OTA_RAW_BASE = 'https://raw.githubusercontent.com/orlozuroffo-byte/bytetopia-ota/main';
 // Fallback raw bases (older installs may carry stale repo paths) — tried in order until one serves a valid manifest.
 // Ordered by what actually answers. The old list pointed at two GitLab paths
 // and one GitHub org that do not exist, so a rate-limited GitLab left the
 // updater with nothing usable and the user saw a bare "update failed".
 const OTA_RAW_BASE_FALLBACKS = [
   DEFAULT_OTA_RAW_BASE,
-  'https://raw.githubusercontent.com/orlozuroffo-byte/bytetopia-ota/main',
+  'https://gitlab.com/itclubfayoum/bytetopia-repo/-/raw/main',
+  'https://cdn.jsdelivr.net/gh/orlozuroffo-byte/bytetopia-ota@main',
   'https://gitlab.com/itclubfayoum/oddware-repo/-/raw/main',
   'https://gitlab.com/itclubfayoum/bytopia-repo/-/raw/main'
 ];
@@ -1936,9 +1937,20 @@ app.get('/api/admin/ota/v3/check', requireAdmin, async function (req, res) {
 
 app.post('/api/admin/ota/v3/apply', requireAdmin, async function (req, res) {
   const stageDir = path.join(DATA_DIR, '.ota-v3-' + Date.now());
+  const applyStarted = Date.now();
+  let phase = 'manifest';
+  // One line per phase. Previously an apply that stalled or died left no trace
+  // at all, so "the update failed" could not be told apart from "the update is
+  // still working" — and there was nothing to act on afterwards.
+  const note = (msg, extra) => {
+    const secs = ((Date.now() - applyStarted) / 1000).toFixed(1);
+    console.log(`[OTA APPLY] ${phase} +${secs}s ${msg}`, extra === undefined ? '' : JSON.stringify(extra));
+  };
   try {
+    note('start');
     const sources = otaSourcesFor(req);
     const got = await otaEngine.fetchManifest(sources, { token: otaTokenFor() });
+    note('manifest ok', { baseUrl: got.baseUrl, seq: got.manifest.buildSeq });
 
     const wanted = {};
     Object.keys(got.manifest.files).forEach(function (rel) {
@@ -1955,11 +1967,14 @@ app.post('/api/admin/ota/v3/apply', requireAdmin, async function (req, res) {
     // the repository has no payload yet, in which case the per-file path below
     // still works exactly as before.
     let staged = null;
+    phase = 'payload';
     try {
       staged = await otaEngine.stageFromPayload(scoped, got.baseUrl, stageDir, {
         token: otaTokenFor(),
-        currentRoot: ACTIVE_ROOT
+        currentRoot: ACTIVE_ROOT,
+        onWait: (w) => note('waiting', w)
       });
+      note(staged ? 'payload ok' : 'no payload, falling back');
     } catch (err) {
       // A 429 here is worth surfacing instead of silently falling back; any
       // other payload problem falls through to the per-file path.
@@ -1967,7 +1982,9 @@ app.post('/api/admin/ota/v3/apply', requireAdmin, async function (req, res) {
       staged = null;
     }
     if (!staged) {
+      phase = 'files';
       staged = await otaEngine.stageFiles(scoped, got.baseUrl, stageDir, {
+        onWait: (w) => note('waiting', w),
         token: otaTokenFor(),
         currentRoot: ACTIVE_ROOT
       });
@@ -1981,6 +1998,7 @@ app.post('/api/admin/ota/v3/apply', requireAdmin, async function (req, res) {
 
     const swapped = promoteStagedOverlay(stageDir);
     const supervised = process.env.BYTETOPIA_SUPERVISED === '1';
+    note('promoted', { seq: check.manifest.buildSeq, viaPayload: !!staged.viaPayload, downloaded: staged.downloaded });
     res.json({
       ok: true,
       updated: true,
@@ -2005,6 +2023,7 @@ app.post('/api/admin/ota/v3/apply', requireAdmin, async function (req, res) {
     // old code in memory: the files on disk were new, the app was not.
     if (supervised) scheduleOtaHotRestart();
   } catch (err) {
+    note('FAILED', { code: err.otaCode || 'OTA_UNKNOWN', detail: err.otaDetail || err.message });
     try { fs.rmSync(stageDir, { recursive: true, force: true }); } catch (_) {}
     res.json({
       ok: false,
