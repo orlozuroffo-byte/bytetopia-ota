@@ -29,6 +29,12 @@ const RAW_SHAPES = (ownerRepo, branch) => [
 
 const DEFAULT_SOURCES = [
   'https://gitlab.com/itclubfayoum/bytetopia-repo/-/raw/main',
+  // GitHub mirror of the same tree. GitLab rate-limits aggressively (~100
+  // requests/min/IP, and a first OTA needs ~49), so a single-source update
+  // fails routinely. The mirror is byte-identical and every download is
+  // still verified against the manifest hash, so a mirror cannot smuggle
+  // content in.
+  'https://raw.githubusercontent.com/orlozuroffo-byte/bytetopia-ota/main',
   'https://raw.githubusercontent.com/itclubfayoum/bytetopia-repo/main'
 ];
 
@@ -354,18 +360,36 @@ async function stageFromPayload(manifest, baseUrl, stageDir, opts = {}) {
     return null;
   }
 
-  // Prefer the Package Registry URL carried in the descriptor; fall back to the
-  // raw tree for repositories that keep the archive next to the manifest.
-  const archUrl = meta.archiveUrl || `${baseUrl}/ota-payload.tar.gz?t=${Date.now()}`;
-  const archive = await downloadRaw(archUrl, opts, Math.max(120000, opts.timeoutMs || 0));
-  if (sha256(archive) !== meta.sha256) {
-    throw fail('OTA_FILE_MISMATCH', reason('OTA_FILE_MISMATCH'), {
-      url: archUrl,
-      expected: meta.sha256,
-      got: sha256(archive)
-    });
+  // Try the mirror this descriptor came from first, then any other known
+  // mirror, then the registry URL recorded at build time. GitLab answers 429
+  // under load while the archive sits behind a CDN elsewhere, so a single URL
+  // is enough to lose an update.
+  const archUrls = [];
+  const pushUrl = (u) => {
+    if (!u) return;
+    const abs = /^https?:/i.test(u) ? u : `${baseUrl}/${u.replace(/^\/+/, '')}`;
+    if (archUrls.indexOf(abs) === -1) archUrls.push(abs);
+  };
+  for (const src of DEFAULT_SOURCES) {
+    pushUrl(`${String(src).replace(/\/+$/, '')}/ota-payload.tar.gz`);
   }
+  if (meta.archiveUrl) archUrls.unshift(meta.archiveUrl);
 
+  let archive = null;
+  let archUrl = '';
+  const archTried = [];
+  for (const candidate of archUrls) {
+    try {
+      const buf = await downloadRaw(`${candidate}?t=${Date.now()}`, opts, Math.max(120000, opts.timeoutMs || 0));
+      if (sha256(buf) === meta.sha256) { archive = buf; archUrl = candidate; break; }
+      archTried.push({ url: candidate, reason: 'HASH_MISMATCH' });
+    } catch (err) {
+      archTried.push({ url: candidate, reason: err?.reason || err?.message || 'FETCH_FAILED' });
+    }
+  }
+  if (!archive) {
+    throw fail('OTA_FILE_NOT_FOUND', reason('OTA_FILE_NOT_FOUND'), { archive: archTried });
+  }
   let entries;
   try {
     entries = readTar(zlib.gunzipSync(archive));
