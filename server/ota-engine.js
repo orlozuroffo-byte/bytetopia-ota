@@ -186,7 +186,14 @@ async function fetchManifest(sources, opts = {}) {
     }
 
     tried.push({ url, ok: true, reason: 'OK' });
-    return { baseUrl: String(base).replace(/\/+$/, ''), manifest, tried };
+    // Strip the path this candidate was read from so callers get a mirror root
+    // they can append file paths to, whether it answered at the snapshot index
+    // or at the legacy root name.
+    const baseUrl = String(url0)
+      .replace(/\/manifests\/(current|[0-9]+)\.json$/, '')
+      .replace(/\/ota-manifest\.json$/, '')
+      .replace(/\/+$/, '');
+    return { baseUrl, manifest, tried };
   }
 
   // Choose the most useful error instead of a generic one.
