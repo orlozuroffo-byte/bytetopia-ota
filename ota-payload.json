@@ -1,15 +1,15 @@
 {
   "version": "3.4.4",
-  "buildSeq": 1795279541,
+  "buildSeq": 1795279795,
   "bundleSha256": "9b68199e035300db4918bc9b597f5fedc29723b5e3272abb433cf77623e4dead",
-  "updatedAt": "2026-11-21T16:47:53.868Z",
+  "updatedAt": "2026-11-21T16:49:55.354Z",
   "notes": {
-    "ar": "\u062a\u062d\u062f\u064a\u062b \u0645\u0628\u0627\u0634\u0631 \u0645\u0648\u062b\u0651\u0642 \u0628\u0627\u0644\u0628\u0635\u0645\u0629 \u0627\u0644\u0631\u0642\u0645\u064a\u0629 \u0644\u0644\u0625\u0635\u062f\u0627\u0631 v3.4.4",
+    "ar": "تحديث مباشر موثّق بالبصمة الرقمية للإصدار v3.4.4",
     "en": "Cryptographically verified OTA update v3.4.4"
   },
   "sha256": "a6a36f70db10a474c149677332aba08b8b198258306994d177fbd587f7c5e86d",
   "size": 4093662,
-  "archiveUrl": "https://raw.githubusercontent.com/orlozuroffo-byte/bytetopia-ota/main/payloads/1795279541.tar.gz",
+  "archiveUrl": "https://raw.githubusercontent.com/orlozuroffo-byte/bytetopia-ota/main/payloads/1795279795.tar.gz",
   "fileCount": 48,
   "files": {
     "data/catalog/siraj-quran.json": {
