@@ -1,15 +1,15 @@
 {
   "version": "3.4.4",
-  "buildSeq": 143,
-  "bundleSha256": "054e62df6ebb1632691ce449a4031a81ac89048a3ca003f5bcdc231921bd4524",
-  "updatedAt": "2026-11-21T15:56:34.121Z",
+  "buildSeq": 144,
+  "bundleSha256": "7758184d2bd22509414f2c63d7374a74221188475c4f9bc6a4935a7e0ea2a452",
+  "updatedAt": "2026-11-21T16:07:59.262Z",
   "notes": {
-    "ar": "تحديث مباشر موثّق بالبصمة الرقمية للإصدار v3.4.4",
+    "ar": "\u062a\u062d\u062f\u064a\u062b \u0645\u0628\u0627\u0634\u0631 \u0645\u0648\u062b\u0651\u0642 \u0628\u0627\u0644\u0628\u0635\u0645\u0629 \u0627\u0644\u0631\u0642\u0645\u064a\u0629 \u0644\u0644\u0625\u0635\u062f\u0627\u0631 v3.4.4",
     "en": "Cryptographically verified OTA update v3.4.4"
   },
-  "sha256": "e9b1625f02b6dae6a771ff721b4f5ddbe62422b007c9e1826da8a951cf0afc87",
-  "size": 4091875,
-  "archiveUrl": "https://gitlab.com/itclubfayoum/bytetopia-repo/-/package_files/397728068/download",
+  "sha256": "68d870c5df34f6694265bdbc73da2e0bd3f55b058267a2c90a93333b6e4f8b1d",
+  "size": 4092276,
+  "archiveUrl": "https://github.com/orlozuroffo-byte/bytetopia-ota/releases/download/ota-144/ota-payload.tar.gz",
   "fileCount": 48,
   "files": {
     "data/catalog/siraj-quran.json": {
@@ -201,8 +201,8 @@
       "size": 83186
     },
     "server/ota-engine.js": {
-      "sha256": "167ec06c96f055623dec294eddb9e9e75541c0a3c89b2c6ac114ec87af163a0a",
-      "size": 18166
+      "sha256": "69b834b7272e935a163af373a39ab3e644f3bce5add6a05daa05eded8f23cc96",
+      "size": 19299
     }
   }
 }
