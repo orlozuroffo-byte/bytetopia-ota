@@ -121,13 +121,31 @@ async function fetchJson(url, { token, timeoutMs = 20000, maxAttempts = 3, onWai
  * Try every candidate base URL until one serves a valid, self-consistent
  * manifest. Returns { baseUrl, manifest, tried[] }.
  */
-async function fetchManifest(sources, { token } = {}) {
+async function fetchManifest(sources, opts = {}) {
+  const { token } = opts;
   const tried = [];
   let sawManifest = false;
 
-  for (const base of sources) {
-    // cache-buster: GitLab's CDN happily serves a stale manifest otherwise
-    const url = `${String(base).replace(/\/+$/, '')}/ota-manifest.json?t=${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+  // Snapshot first, mutable root second. Measured on GitHub's CDN: the same path
+  // kept returning a five-minute-old body even with a cache-busting query
+  // string, which paired a new manifest with old file bytes and failed the
+  // hash check. Snapshot paths embed the sequence and are never rewritten.
+  // Pinned sequence from the client, when it knows one, jumps straight to an
+  // immutable snapshot and skips the mutable names entirely.
+  const attempts = [];
+  if (opts && opts.wantSeq) {
+    for (const lead of sources) {
+      attempts.push(`${String(lead).replace(/\/+$/, '')}/manifests/${opts.wantSeq}.json`);
+    }
+  }
+  for (const lead of sources) {
+    const base = String(lead).replace(/\/+$/, '');
+    attempts.push(`${base}/manifests/current.json`);
+    attempts.push(`${base}/ota-manifest.json`);
+  }
+
+  for (const url0 of attempts) {
+    const url = `${url0}?t=${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
     let res;
     try {
       res = await fetchJson(url, { token });
@@ -361,13 +379,20 @@ async function stageFromPayload(manifest, baseUrl, stageDir, opts = {}) {
   // binary in git would be re-served on every clone and raw fetches, while the
   // registry is content-addressed and cheap. Older repositories without a
   // payload simply 404 here and fall back to per-file staging.
-  const metaUrl = `${baseUrl}/ota-payload.json?t=${Date.now()}`;
-  let meta;
-  try {
-    meta = JSON.parse((await downloadRaw(metaUrl, opts)).toString('utf8'));
-  } catch (_) {
-    return null; // no payload published — let the per-file path handle it
+  // Descriptor also comes from a sequence-scoped path where available.
+  let meta = null;
+  for (const candidate of [
+    `${baseUrl}/payloads/${manifest.buildSeq}.json`,
+    `${baseUrl}/ota-payload.json`
+  ]) {
+    try {
+      const parsed = JSON.parse((await downloadRaw(`${candidate}?t=${Date.now()}`, opts)).toString('utf8'));
+      if (parsed && parsed.buildSeq === manifest.buildSeq) { meta = parsed; break; }
+      // A root descriptor describing some other build is stale cache, not an
+      // error: keep looking rather than trusting it.
+    } catch (_) { /* try the next name */ }
   }
+  if (!meta) return null; // no payload published — let the per-file path handle it
   if (!meta || !meta.sha256 || !meta.size || !meta.files) return null;
   // Only use a payload that describes exactly the manifest we were told about.
   if (meta.buildSeq !== manifest.buildSeq || meta.bundleSha256 !== manifest.bundleSha256) {
@@ -384,10 +409,17 @@ async function stageFromPayload(manifest, baseUrl, stageDir, opts = {}) {
     const abs = /^https?:/i.test(u) ? u : `${baseUrl}/${u.replace(/^\/+/, '')}`;
     if (archUrls.indexOf(abs) === -1) archUrls.push(abs);
   };
+  // Snapshot names carry the sequence, so they can never be served stale; the
+  // mutable name stays as a last resort for installations pointed at a mirror
+  // that only publishes the root copy.
+  if (meta.archiveUrl) pushUrl(meta.archiveUrl);
+  for (const src of DEFAULT_SOURCES) {
+    const base = String(src).replace(/\/+$/, '');
+    pushUrl(`${base}/payloads/${manifest.buildSeq}.tar.gz`);
+  }
   for (const src of DEFAULT_SOURCES) {
     pushUrl(`${String(src).replace(/\/+$/, '')}/ota-payload.tar.gz`);
   }
-  if (meta.archiveUrl) archUrls.unshift(meta.archiveUrl);
 
   let archive = null;
   let archUrl = '';
