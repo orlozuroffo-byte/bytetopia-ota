@@ -1,15 +1,15 @@
 {
   "version": "3.4.4",
   "buildSeq": 1795279541,
-  "bundleSha256": "018998603fe57f5d6601c0bebb71c097b11e9bc3d5f082bb4035e7bf8461f99c",
-  "updatedAt": "2026-11-21T16:46:08.998Z",
+  "bundleSha256": "9b68199e035300db4918bc9b597f5fedc29723b5e3272abb433cf77623e4dead",
+  "updatedAt": "2026-11-21T16:47:53.868Z",
   "notes": {
     "ar": "تحديث مباشر موثّق بالبصمة الرقمية للإصدار v3.4.4",
     "en": "Cryptographically verified OTA update v3.4.4"
   },
   "payload": {
-    "sha256": "f6da00d03dc590eeaf3b40628dd698a1d849a24cb912aeb0d37f9a43ec7ca6c4",
-    "size": 4093537
+    "sha256": "a6a36f70db10a474c149677332aba08b8b198258306994d177fbd587f7c5e86d",
+    "size": 4093662
   },
   "files": {
     "data/catalog/siraj-quran.json": {
@@ -201,8 +201,8 @@
       "size": 84568
     },
     "server/ota-engine.js": {
-      "sha256": "aeefc5961a5bbced28aaa5201e498ab91c2d595f7f25a9a6f2b8374a4f07a2cf",
-      "size": 21702
+      "sha256": "fb8bb332d374267c1fdb1fe81790ebed99f08d99c514335b55f9806a7b4c67bd",
+      "size": 22027
     }
   }
 }
