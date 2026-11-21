@@ -1,0 +1,208 @@
+{
+  "version": "3.4.4",
+  "buildSeq": 1795279541,
+  "bundleSha256": "018998603fe57f5d6601c0bebb71c097b11e9bc3d5f082bb4035e7bf8461f99c",
+  "updatedAt": "2026-11-21T16:46:08.998Z",
+  "notes": {
+    "ar": "تحديث مباشر موثّق بالبصمة الرقمية للإصدار v3.4.4",
+    "en": "Cryptographically verified OTA update v3.4.4"
+  },
+  "payload": {
+    "sha256": "f6da00d03dc590eeaf3b40628dd698a1d849a24cb912aeb0d37f9a43ec7ca6c4",
+    "size": 4093537
+  },
+  "files": {
+    "data/catalog/siraj-quran.json": {
+      "sha256": "2fd2ec7bbd9aecb7fd0c72b37e20bd2de01ff7b608c9c0fdde6a4d415932a84a",
+      "size": 10474
+    },
+    "data/catalog/vortexg.json": {
+      "sha256": "19fa015fb755e2ca47d6b70ec37e945db009af6af4a3408698004621733b9cfa",
+      "size": 12874
+    },
+    "package.json": {
+      "sha256": "d7a10ebc4d8be826ad05f358d21024fbddd62f9f934b9d69cb498d67acfdd049",
+      "size": 949
+    },
+    "public/assets/covers/entropy-pixel.jpg": {
+      "sha256": "6ad74aaa66c53c90cb6751b9987dda8ce098449f296673ccde5c5f58b7ce76f6",
+      "size": 368036
+    },
+    "public/assets/covers/gravity-mutation.jpg": {
+      "sha256": "3c3104ceeea9531e7d1ee4d63379580f515e63e66d3a0c29754ab2e05a873228",
+      "size": 224463
+    },
+    "public/assets/covers/phantom-synth.jpg": {
+      "sha256": "8cfca08a2fe227b99407ac2aed872ed0f33d55208254c452c1e8f8bff552cee8",
+      "size": 313958
+    },
+    "public/assets/covers/reverse-panopticon.jpg": {
+      "sha256": "da9c7a275c0f5d47ecd21e7319541ee62f60073c4c59bac4cb27d21f84242140",
+      "size": 253567
+    },
+    "public/assets/covers/siraj-quran.png": {
+      "sha256": "bf65b701f8e11dc2594f7ef7139d5473e4fd1c6801d041795eeffe0b8457ee0e",
+      "size": 296429
+    },
+    "public/assets/covers/spectral-stegano.jpg": {
+      "sha256": "68cc34121c3feebfc58fafa192f79a857472b5f9cb130e752db18a05e3b0be05",
+      "size": 259427
+    },
+    "public/assets/covers/ui-audio-dsp.jpg": {
+      "sha256": "584800236e6ce661180bc16ef08b7c559068139d719d1b82d270f0dcfadc903e",
+      "size": 205195
+    },
+    "public/assets/covers/ui-crypto-app.jpg": {
+      "sha256": "cd00169d3e41fb3518ef63fa88730dd45d660ad67a0919ebd55b63580065f848",
+      "size": 241919
+    },
+    "public/assets/covers/ui-net-radar.jpg": {
+      "sha256": "e4c027560e319ac3757c286b9695297abc028c33ba82b17717970262891bd6e6",
+      "size": 215723
+    },
+    "public/assets/covers/vortexg-icon.jpg": {
+      "sha256": "daec780d3af9414d3e53f3152a992c55d54feb5033b5de8adcde186586614a47",
+      "size": 18680
+    },
+    "public/assets/covers/vortexg.jpg": {
+      "sha256": "7ed7d1579837e0bcdc8160bec6eec1913deaec1f9d5cd38306a0c5a520d9372d",
+      "size": 164444
+    },
+    "public/assets/covers/zero-kelvin-express.jpg": {
+      "sha256": "e32eb843c39ce0e13d450d1fbb07e233edcdc352e3328a39dbceb961a11404fe",
+      "size": 251071
+    },
+    "public/assets/shots/vortexg/01-library.jpg": {
+      "sha256": "d9a1a0233f0bb8df4d685be04328e88fa7a22478dfade0dbbd6eac88ba87094d",
+      "size": 187621
+    },
+    "public/assets/shots/vortexg/02-more-games.jpg": {
+      "sha256": "c3c5638cd0de7d11fc53e2880e4423fc2c0bf1140d0ad6c296401efa7122a0b4",
+      "size": 188562
+    },
+    "public/assets/shots/vortexg/03-select-system.jpg": {
+      "sha256": "65afcf2cbed69ee1343d86c29cc300c994a407cc4fb2456031d0f01407aaa168",
+      "size": 141256
+    },
+    "public/assets/shots/vortexg/04-settings.jpg": {
+      "sha256": "632cbcc576c2a3cf8b2db12ad0fe766b923fd6622ee10cb0d6823b7ad897c2e3",
+      "size": 151805
+    },
+    "public/assets/shots/vortexg/05-about.jpg": {
+      "sha256": "cab70d9b29aa450f7117fe076041682bae7e12d6d4bc0f559e213df537d8227c",
+      "size": 171080
+    },
+    "public/assets/shots/vortexg/06-controls.jpg": {
+      "sha256": "6b9f74bc7032de6a8d727bb8d3d4aa12137f05e43c81d9e0e49ab2511e137d4b",
+      "size": 163953
+    },
+    "public/cpanel.html": {
+      "sha256": "feb69113095eb632095b17fdcedd6fa2ba160da41e19f10cb53feccf879ce1f7",
+      "size": 1155
+    },
+    "public/css/cpanel.css": {
+      "sha256": "0a1d96240c993185d88fa373f88834a875b9bb76c1d2bb24195f9f71a6b39bc6",
+      "size": 10471
+    },
+    "public/css/fonts.css": {
+      "sha256": "14cf0feb10dd9f9c28d52783a2de5743fb18f40d0aae5736a5095707519cfdf8",
+      "size": 13721
+    },
+    "public/css/responsive.css": {
+      "sha256": "16fc034faaa46f58c4c066884c3f8bd81af2f53dd77f0b7df5fbd6c0c156c3f9",
+      "size": 11355
+    },
+    "public/css/style.css": {
+      "sha256": "60e2a6814cc9eb38e2dc195f9446c1288dc8284e71f5bf7dc5982aaf334bf3b1",
+      "size": 30252
+    },
+    "public/fonts/font-1.woff2": {
+      "sha256": "748022f50c427456ad66031e855349be3448ee1f05a5f1eb59574ebe0c686749",
+      "size": 30896
+    },
+    "public/fonts/font-10.woff2": {
+      "sha256": "8895e3d49825128bfa5238e4c96e9b432d7a3dadbe5c17c6081267398305dc71",
+      "size": 6712
+    },
+    "public/fonts/font-11.woff2": {
+      "sha256": "952dddb45d2f96f71cbf3b7f510b24379afc3c89ea02fcf89d377b45d62c0166",
+      "size": 18940
+    },
+    "public/fonts/font-12.woff2": {
+      "sha256": "0640890476fc1198ab4de571fb658de443c4d85b66466ec09534a8737ab1ce9d",
+      "size": 22288
+    },
+    "public/fonts/font-2.woff2": {
+      "sha256": "da6ada83c3a87c2f0211325dc0a123702e1d4a940958b3e943ac4f37b31d5371",
+      "size": 16648
+    },
+    "public/fonts/font-3.woff2": {
+      "sha256": "82c13cbd1352d76e97c3d335caa912ae68fecdc3949a43cf8d149eb892384c1b",
+      "size": 33820
+    },
+    "public/fonts/font-4.woff2": {
+      "sha256": "62213be8a78b42f1e29d1452d91e2f8b3e745572a9dd98d3941e39fa00b37d76",
+      "size": 1640
+    },
+    "public/fonts/font-5.woff2": {
+      "sha256": "e17cfd15fb96909d64095015f958207063a0c07191da3512df7d560a781aebdf",
+      "size": 8872
+    },
+    "public/fonts/font-6.woff2": {
+      "sha256": "0a557721b1f8b36d3f3f84442689a71ca4a744300abcb46a1953f51bfc663b66",
+      "size": 6836
+    },
+    "public/fonts/font-7.woff2": {
+      "sha256": "c89b9cc0bc6262bd4f8d8494b6961601f3aefa829d08c2e3635f4d501d3a47c2",
+      "size": 5888
+    },
+    "public/fonts/font-8.woff2": {
+      "sha256": "db5ff4db83e580426280e9337a58dc57d3a83784a1b03ad80914651594441d52",
+      "size": 11624
+    },
+    "public/fonts/font-9.woff2": {
+      "sha256": "83c005d49d8a6a50474c73a5a36ac0468076e9c4a29da7bdb14995d80560a5be",
+      "size": 31432
+    },
+    "public/index.html": {
+      "sha256": "c73d7cfe720a33031df452cc1d31edf98a338a0152d627686b3c0c444e6a9cec",
+      "size": 3475
+    },
+    "public/js/app.js": {
+      "sha256": "6f278252d401c54158231120684373bda9a20c8575763db575f925bdf4abe653",
+      "size": 62226
+    },
+    "public/js/cpanel.js": {
+      "sha256": "74abdd9fc289af32fabb755f0d1a5850c180b45cf4e3ccd0912e25f6a501be9d",
+      "size": 137356
+    },
+    "public/js/i18n.js": {
+      "sha256": "7184f3790f6c9cfe890c8d8433c898e3336387c3eeff8be80f8402e07a770ffd",
+      "size": 9544
+    },
+    "public/js/icons.js": {
+      "sha256": "8977c44f5cc8745216ed6f5fd96c40875e1197c9920d54c998902ec7e630bfcb",
+      "size": 3635
+    },
+    "public/js/qr.js": {
+      "sha256": "31c53329b010d1753898d11e8b04440234c038b4447f3ebcaafee78df4afc4dc",
+      "size": 6580
+    },
+    "public/js/sfx.js": {
+      "sha256": "aa5ca25decda65c8ca3b6c9eadd2c68d2ecda8f025d6efd7e57b81730a94058b",
+      "size": 2198
+    },
+    "server/boot.js": {
+      "sha256": "a1dda4ac2f2b1d50cc7e4d56e7370cc3df99b8c4b8d7d54625b544d766999b3c",
+      "size": 4680
+    },
+    "server/index.js": {
+      "sha256": "8ffdda5c40f76ec6901eda9a4dc974baa3c22ed81ff54aeee0e801035c9b0e55",
+      "size": 84568
+    },
+    "server/ota-engine.js": {
+      "sha256": "aeefc5961a5bbced28aaa5201e498ab91c2d595f7f25a9a6f2b8374a4f07a2cf",
+      "size": 21702
+    }
+  }
+}
