@@ -130,12 +130,41 @@ async function fetchManifest(sources, opts = {}) {
   // kept returning a five-minute-old body even with a cache-busting query
   // string, which paired a new manifest with old file bytes and failed the
   // hash check. Snapshot paths embed the sequence and are never rewritten.
+  // Resolve the newest published snapshot first. Every mutable path on
+  // raw.githubusercontent sits behind a CDN that served a five-minute-old body
+  // in testing — including manifests/current.json, which was written two
+  // minutes earlier and still read back as the previous build. The contents API
+  // is not cached, so it is the one place that knows the truth immediately.
+  let wantSeq = (opts && opts.wantSeq) || null;
+  if (!wantSeq) {
+    for (const lead of sources) {
+      const base = String(lead).replace(/\/+$/, '');
+      if (!/raw\.githubusercontent\.com/i.test(base)) continue;
+      // raw.githubusercontent.com/<owner>/<repo>/<branch> → api.github.com/repos/<owner>/<repo>
+      const m = base.match(/^https:\/\/raw\.githubusercontent\.com\/([^/]+)\/([^/]+)\/(.+)$/i);
+      if (!m) continue;
+      const [, owner, repo, branch] = m;
+      try {
+        const res = await fetchJson(
+          `https://api.github.com/repos/${owner}/${repo}/contents/manifests?ref=${branch}`,
+          { token, maxAttempts: 1, timeoutMs: 8000 });
+        const listing = JSON.parse(res.text);
+        if (Array.isArray(listing)) {
+          const seqs = listing.map((f) => Number(String(f.name).replace(/\.json$/, '')))
+            .filter((n) => Number.isFinite(n) && n > 0);
+          if (seqs.length) wantSeq = Math.max(...seqs);
+        }
+      } catch (_) { /* fall through to the mutable names */ }
+      if (wantSeq) break;
+    }
+  }
+
   // Pinned sequence from the client, when it knows one, jumps straight to an
   // immutable snapshot and skips the mutable names entirely.
   const attempts = [];
-  if (opts && opts.wantSeq) {
+  if (wantSeq) {
     for (const lead of sources) {
-      attempts.push(`${String(lead).replace(/\/+$/, '')}/manifests/${opts.wantSeq}.json`);
+      attempts.push(`${String(lead).replace(/\/+$/, '')}/manifests/${wantSeq}.json`);
     }
   }
   for (const lead of sources) {
