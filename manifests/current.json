@@ -1,8 +1,8 @@
 {
   "version": "3.4.4",
-  "buildSeq": 1795279541,
+  "buildSeq": 1795279795,
   "bundleSha256": "9b68199e035300db4918bc9b597f5fedc29723b5e3272abb433cf77623e4dead",
-  "updatedAt": "2026-11-21T16:47:53.868Z",
+  "updatedAt": "2026-11-21T16:49:55.354Z",
   "notes": {
     "ar": "تحديث مباشر موثّق بالبصمة الرقمية للإصدار v3.4.4",
     "en": "Cryptographically verified OTA update v3.4.4"
