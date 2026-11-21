@@ -1,9 +1,9 @@
 {
   "version": "3.4.4",
-  "buildSeq": 146,
-  "updatedAt": "2026-11-21T16:43:37.359Z",
+  "buildSeq": 1795279541,
+  "updatedAt": "2026-11-21T16:46:08.998Z",
   "repoRawBase": "https://gitlab.com/itclubfayoum/bytetopia-repo/-/raw/main",
-  "bundleSha256": "1963c110979c86c39198b9f72c5c470ad1fb936076ad887f5187448117ec8f81",
+  "bundleSha256": "018998603fe57f5d6601c0bebb71c097b11e9bc3d5f082bb4035e7bf8461f99c",
   "notes": {
     "ar": "تحديث مباشر موثّق بالبصمة الرقمية للإصدار v3.4.4",
     "en": "Cryptographically verified OTA update v3.4.4"
@@ -198,8 +198,8 @@
       "size": 84568
     },
     "server/ota-engine.js": {
-      "sha256": "f4f3c8b528cb10e03323abdc09a8547f8aaa41f2d500d8e835fb8623dcd282f4",
-      "size": 20208
+      "sha256": "aeefc5961a5bbced28aaa5201e498ab91c2d595f7f25a9a6f2b8374a4f07a2cf",
+      "size": 21702
     }
   }
 }
