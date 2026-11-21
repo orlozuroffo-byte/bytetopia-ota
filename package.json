@@ -1,0 +1,33 @@
+{
+  "name": "bytetopia-repo",
+  "version": "3.4.4",
+  "description": "Self-hosted multi-theme app, utility & game distribution platform with Full CPanel CMS, Cryptographic SHA-256 OTA Updater, PySide6 Linux AppImage Studio, Tor (.onion), and Cloudflare Tunnel.",
+  "main": "server/boot.js",
+  "scripts": {
+    "start": "sh -c '[ -d node_modules/adm-zip ] || npm install --no-audit --no-fund; exec node server/boot.js'",
+    "ota:manifest": "node scripts/generate-ota-manifest.js",
+    "dev": "node --watch server/index.js",
+    "build:appimage": "bash scripts/build-appimage.sh"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "self-hosted",
+    "cpanel",
+    "cms",
+    "pyside6",
+    "appimage",
+    "casaos",
+    "ubuntu-server",
+    "tor-hidden-service",
+    "cloudflare-tunnel",
+    "neo-brutalist"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "adm-zip": "^0.5.16",
+    "express": "^4.21.2",
+    "multer": "^2.0.0"
+  }
+}
