@@ -1,0 +1,206 @@
+{
+  "slug": "vortexg",
+  "code": "VTXG",
+  "category": "games",
+  "version": "v1.2.0",
+  "channel": "stable",
+  "featured": true,
+  "status": "published",
+  "releaseDate": "2026-11-07",
+  "license": {
+    "ar": "أداة تشغيل مجانية — الألعاب نفسها محمية بحقوق أصحابها",
+    "en": "Free emulation tool — game titles remain the property of their rights holders"
+  },
+  "title": {
+    "ar": "فورتكس جي — مشغّل ألعاب ريترو",
+    "en": "VortexG — Retro Game Emulator"
+  },
+  "tagline": {
+    "ar": "مشغّل ألعاب سيجا جينيسيس وميجا درايف و32X على ويندوز ولينكس وmacOS — 20 لعبة مدمجة تعمل دون إنترنت، وباقي المكتبة تتنزّل عند الحاجة.",
+    "en": "Sega Genesis, Mega Drive and 32X emulator for Windows, Linux and macOS — 20 bundled games that run offline, with the rest of the library downloaded on demand."
+  },
+  "description": {
+    "ar": "فورتكس جي مشغّل ألعاب ريترو لسطح المكتب، مبني على نواة libretro (Genesis Plus GX وPicoDrive) وبيشتغل على ويندوز 64-بت ولينكس x86-64 وmacOS بنسختَي Apple Silicon وIntel.\n\nبيجي معاه 20 لعبة مدمجة تعمل أوفلاين بشكل كامل: سونيك وستريتس أوف ريج وشينوبي 3 وألتيميت مورتال كومبات 3 وستريت فايتر 2 وكونترا هارد كوربس والعلاء الدين وروّد راش 3 وسنست رايدرز، بالإضافة إلى خمس إصدارات FIFA من 94 لحد 98. باقي المكتبة بتتحمّل من Google Drive عند أول تشغيل وبعدين بتتخزّن على جهازك في ~/.vortexg.\n\nاللعب بيبدأ ملء الشاشة بنسبة 4:3 محفوظة. F11 بيبدّل ملء الشاشة، وEscape بيفتح القائمة. لوحة المفاتيح افتراضيًا: الأسهم للحركة، Enter لـ Start، وZ/X/C للأزرار A/B/C، وA/S/D لـ X/Y/Z — وكل ده قابل للتغيير من قائمة الإعدادات. ذراعَي تحكّم بيتعرّفوا عليهما لحظة توصيلهما، بنظام منفذين مستقلين لكل لاعب.\n\nحفظ الحالات اليدوي وحفظ التقدّم مرتبطين ببصمة SHA-256 لكل ROM، فالحفظ مش بيتلخبط بين لعبتين. الأكواد السرية (Cheats) مقترحات من قواعد بيانات مدمجة، ومقفولة لحد ما تختارها بنفسك — والتطابق مش دليل إن الكود شغال، فالأفضل تتأكد من إصدار اللعبة ومنطقتها.\n\nالتطبيق بيحترم حقوق الملكية الفكرية: مفيش أي ROM متضمّن في حزمة التثبيت نفسها، والألعاب المدمجة لُعبت واتحفظت في مجلد منفصل، والملفات اللي تختار تنزّلها مسؤوليتك وحدك.\n\n⚠️ تنبيه حقوق: الألعاب المدمجة واللي بتتنزّل كلها عناوين تجارية مملوكة لأصحابها (سيجا، نينتندو، EA وغيرهم). التطبيق بيوفّر أداة تشغيل فقط، وإحنا بنوزّعه زي ما المطوّر بيوزّعه بالظبط. استخدمه مع الألعاب اللي عندك حق فيها.",
+    "en": "VortexG is a desktop retro-game emulator built on the libretro cores Genesis Plus GX and PicoDrive, shipping for Windows x64, Linux x86-64, and macOS on both Apple Silicon and Intel.\n\nIt includes 20 bundled games that run fully offline — Sonic the Hedgehog, Sonic 3, Streets of Rage 1–3, Shinobi III, Ultimate Mortal Kombat 3, Street Fighter II: Special Champion Edition, both TMNT titles, Mighty Morphin Power Rangers, Sunset Riders, Road Rash 3, Aladdin, Contra: Hard Corps, and five FIFA releases from '94 through '98. The wider library downloads from Google Drive on first use and is then kept on your own machine under ~/.vortexg.\n\nGames start fullscreen at a preserved 4:3 aspect ratio. F11 toggles fullscreen and Escape opens the in-game menu. Default keyboard controls are arrows to move, Enter for Start, Z/X/C for A/B/C and A/S/D for X/Y/Z, and every binding is remappable from Settings. Two independent controller ports are supported, with controllers detected as soon as they are connected.\n\nManual save states are tied to each ROM's SHA-256, so saves never bleed between games. Cheats are suggestions from bundled databases and stay disabled until you explicitly select them; a checksum match does not prove a code works, so check the game's edition and region first.\n\nThe project is careful about intellectual property: no ROM is packaged inside the installer itself, the bundled titles live in a separate folder, and files you choose to download remain your own responsibility.\n\n⚠️ Rights notice: the bundled and downloadable titles are commercial properties owned by their respective rights holders (Sega, Nintendo, EA and others). The application provides an emulation tool only and is redistributed exactly as the developer publishes it. Use it with games you are entitled to use."
+  },
+  "cover": "/assets/covers/vortexg.jpg",
+  "screenshots": [
+    "/assets/shots/vortexg/01-library.jpg",
+    "/assets/shots/vortexg/02-more-games.jpg",
+    "/assets/shots/vortexg/03-select-system.jpg",
+    "/assets/shots/vortexg/04-settings.jpg",
+    "/assets/shots/vortexg/06-controls.jpg",
+    "/assets/shots/vortexg/05-about.jpg"
+  ],
+  "techStack": "Python • pygame • libretro (Genesis Plus GX + PicoDrive)",
+  "tags": {
+    "ar": [
+      "ريترو",
+      "سيجا",
+      "جينيسيس",
+      "ميجا درايف",
+      "32X",
+      "محاكي",
+      "ألعاب",
+      "سطح مكتب"
+    ],
+    "en": [
+      "Retro",
+      "Sega",
+      "Genesis",
+      "Mega Drive",
+      "32X",
+      "Emulator",
+      "Games",
+      "Desktop"
+    ]
+  },
+  "highlights": {
+    "ar": [
+      "20 لعبة مدمجة تعمل أوفلاين — سونيك وستريتس أوف ريج وشينوبي 3 وكونترا وFIFA 94–98",
+      "نواة مزدوجة: Genesis Plus GX وPicoDrive، مع دعم 32X",
+      "ثلاث منصات: ويندوز x64 • لينكس x86-64 • macOS (Apple Silicon + Intel)",
+      "منفذان مستقلان للذراعين مع تخصيص أزرار لكل لاعب",
+      "حفظ حالات مرتبط ببصمة SHA-256 لكل ROM — مفيش خلط بين الألعاب",
+      "أكواد سرية مقترحة ومقفولة لحد ما تختارها بنفسك",
+      "ملء الشاشة بنسبة 4:3 محفوظة، مع بديل Smooth أو Sharp للصورة",
+      "التطبيق والملفات كلها على جهازك في ‎~/.vortexg"
+    ],
+    "en": [
+      "20 bundled games that run fully offline — Sonic, Streets of Rage, Shinobi III, Contra, FIFA '94–'98",
+      "Dual cores: Genesis Plus GX and PicoDrive, with 32X support",
+      "Three platforms: Windows x64 • Linux x86-64 • macOS (Apple Silicon + Intel)",
+      "Two independent controller ports with per-player rebinding",
+      "Save states tied to each ROM's SHA-256 — no cross-game bleed",
+      "Cheats surfaced as suggestions and disabled until you opt in",
+      "Fullscreen with a preserved 4:3 aspect, Smooth or Sharp filtering",
+      "Everything stays on your machine under ~/.vortexg"
+    ]
+  },
+  "changelog": {
+    "ar": [
+      {
+        "version": "v1.2.0",
+        "date": "2026-11-07",
+        "notes": "منفذان مستقلان للذراعين وتخصيص أزرار لكل لاعب، مع تنقّل بالقوائم بلوحة المفاتيح والفأرة. 20 لعبة مختارة مدمجة."
+      },
+      {
+        "version": "v1.1.2",
+        "date": "2026-11-07",
+        "notes": "إصدار سطح مكتب سابق بنفس الأصول الأساسية."
+      }
+    ],
+    "en": [
+      {
+        "version": "v1.2.0",
+        "date": "2026-11-07",
+        "notes": "Two independent controller ports with per-player bindings, plus keyboard and mouse menu navigation. 20 selected games included."
+      },
+      {
+        "version": "v1.1.2",
+        "date": "2026-11-07",
+        "notes": "Earlier desktop release on the same asset set."
+      }
+    ]
+  },
+  "requirements": {
+    "ar": {
+      "windows": "ويندوز 10/11 (64-bit)",
+      "linux": "لينكس 64-bit — أضف صلاحية التنفيذ ثم شغّل الـ AppImage",
+      "macos": "macOS على Apple Silicon أو Intel"
+    },
+    "en": {
+      "windows": "Windows 10/11 (64-bit)",
+      "linux": "64-bit Linux — chmod +x the AppImage and run it",
+      "macos": "macOS on Apple Silicon or Intel"
+    }
+  },
+  "optionalDemo": {
+    "enabled": false,
+    "url": ""
+  },
+  "extraLinks": [
+    {
+      "label": "ملف التحقق SHA256SUMS.txt",
+      "url": "https://gitlab.com/itclubfayoum/bytetopia-repo/-/package_files/396213769/download",
+      "size": "374 B"
+    },
+    {
+      "label": "صفحة المشروع على GitHub (خاصة)",
+      "url": "https://github.com/orlozuroffo-byte/VortexG",
+      "size": ""
+    }
+  ],
+  "platforms": {
+    "windows": {
+      "available": true,
+      "version": "1.2.0",
+      "format": "تنفيذي واحد محمول (x64)",
+      "arch": "x64",
+      "size": "~60 MB",
+      "externalUrl": "https://gitlab.com/itclubfayoum/bytetopia-repo/-/package_files/396213600/download",
+      "sha256": "372b777b39468a043eb230c25610616c5a6cda9cf93ee0db3b062bd7aa265cfe",
+      "notes": {
+        "ar": "الملف غير موقّع رقميًا، فقد يظهر تحذير SmartScreen — ده متوقع. التحقق متاح عبر SHA-256 المرفق.",
+        "en": "The executable is unsigned, so SmartScreen may warn — that is expected. Verify with the attached SHA-256."
+      }
+    },
+    "linux": {
+      "available": true,
+      "version": "1.2.0",
+      "format": "AppImage (x86_64)",
+      "arch": "x86_64",
+      "size": "~68 MB",
+      "externalUrl": "https://gitlab.com/itclubfayoum/bytetopia-repo/-/package_files/396213519/download",
+      "sha256": "9fb6350b19a20d2e82b7ed3b78e33f74d685d6e0473a282d19a7e4ff3c52721e",
+      "notes": {
+        "ar": "chmod +x VortexG-linux-x86_64.AppImage ثم شغّله. مش محتاج تثبيت.",
+        "en": "chmod +x the AppImage and run it. No installation needed."
+      }
+    },
+    "macos": {
+      "available": true,
+      "version": "1.2.0",
+      "format": "ZIP — Apple Silicon و Intel",
+      "arch": "arm64 + x86_64",
+      "size": "~59 MB / ~66 MB",
+      "externalUrl": "https://gitlab.com/itclubfayoum/bytetopia-repo/-/package_files/396213648/download",
+      "sha256": "cbe6f75ba80c80279eb00727ffc180df563bc09fb74914f68bafb7d25a0dee2c",
+      "notes": {
+        "ar": "نسختان منفصلتان: Apple Silicon وIntel. التطبيق غير موقّع، فـ Gatekeeper هيمنع التشغيل أول مرة — افتحه من قائمة كليك يمين ← Open.",
+        "en": "Two separate builds: Apple Silicon and Intel. The app is unsigned, so Gatekeeper blocks the first launch — right-click then Open."
+      },
+      "variants": [
+        {
+          "label": "Apple Silicon (arm64)",
+          "url": "https://gitlab.com/itclubfayoum/bytetopia-repo/-/package_files/396213648/download",
+          "size": "~59 MB",
+          "sha256": "cbe6f75ba80c80279eb00727ffc180df563bc09fb74914f68bafb7d25a0dee2c"
+        },
+        {
+          "label": "Intel (x86_64)",
+          "url": "https://gitlab.com/itclubfayoum/bytetopia-repo/-/package_files/396213762/download",
+          "size": "~66 MB",
+          "sha256": "4948e4a1f0d3b08d7656d63bac77917494363b454b330f3ec1ba3a598f170fa9"
+        }
+      ]
+    },
+    "android": {
+      "available": false
+    },
+    "xbox": {
+      "available": false
+    },
+    "ios": {
+      "available": false
+    }
+  },
+  "screenshotCaptions": {
+    "/assets/shots/vortexg/01-library.jpg": "مكتبة الألعاب المدمجة — 20 لعبة تعمل دون إنترنت",
+    "/assets/shots/vortexg/02-more-games.jpg": "المزيد من الألعاب — تتحمّل من Drive وتُخزَّن محليًا",
+    "/assets/shots/vortexg/03-select-system.jpg": "اختيار النظام — جينيسيس أو 32X قبل التشغيل",
+    "/assets/shots/vortexg/04-settings.jpg": "الإعدادات — جودة الصورة وحركة الخلفية ومستوى الصوت",
+    "/assets/shots/vortexg/06-controls.jpg": "تخصيص التحكّم — لوحة مفاتيح وذراع لكل لاعب",
+    "/assets/shots/vortexg/05-about.jpg": "عن التطبيق — إهداء وحفظ للتراث الرقمي"
+  }
+}
