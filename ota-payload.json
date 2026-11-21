@@ -1,15 +1,15 @@
 {
   "version": "3.4.4",
-  "buildSeq": 144,
-  "bundleSha256": "7758184d2bd22509414f2c63d7374a74221188475c4f9bc6a4935a7e0ea2a452",
-  "updatedAt": "2026-11-21T16:07:59.262Z",
+  "buildSeq": 145,
+  "bundleSha256": "c5e3eb9eaee2e2d4bfe94e8b12f574e6dce0d71565a09586613c8cce254541d8",
+  "updatedAt": "2026-11-21T16:11:26.310Z",
   "notes": {
     "ar": "\u062a\u062d\u062f\u064a\u062b \u0645\u0628\u0627\u0634\u0631 \u0645\u0648\u062b\u0651\u0642 \u0628\u0627\u0644\u0628\u0635\u0645\u0629 \u0627\u0644\u0631\u0642\u0645\u064a\u0629 \u0644\u0644\u0625\u0635\u062f\u0627\u0631 v3.4.4",
     "en": "Cryptographically verified OTA update v3.4.4"
   },
-  "sha256": "68d870c5df34f6694265bdbc73da2e0bd3f55b058267a2c90a93333b6e4f8b1d",
-  "size": 4092276,
-  "archiveUrl": "https://github.com/orlozuroffo-byte/bytetopia-ota/releases/download/ota-144/ota-payload.tar.gz",
+  "sha256": "6bbc9a3d7e62979a3ef131ce375662baf942c5a39e350a8ae15cc53680de10aa",
+  "size": 4092615,
+  "archiveUrl": "https://github.com/orlozuroffo-byte/bytetopia-ota/releases/download/ota-145/ota-payload.tar.gz",
   "fileCount": 48,
   "files": {
     "data/catalog/siraj-quran.json": {
@@ -197,12 +197,12 @@
       "size": 4680
     },
     "server/index.js": {
-      "sha256": "452b5039ccba7ddd66234b20dcc51f103e7b613ec53bbcc638e705646b23f139",
-      "size": 83186
+      "sha256": "2233984ecc7817f0a78b7ef5ebb8878c0a52f36c91cedc4003a4a82ee78cc252",
+      "size": 83486
     },
     "server/ota-engine.js": {
-      "sha256": "69b834b7272e935a163af373a39ab3e644f3bce5add6a05daa05eded8f23cc96",
-      "size": 19299
+      "sha256": "85f2950ca4cc6660e63fea1d3c02b87de12a6906d63eb25c12d670615deabd54",
+      "size": 20060
     }
   }
 }
