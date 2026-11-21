@@ -90,17 +90,30 @@ function reason(code) {
 /* manifest fetching                                                          */
 /* ------------------------------------------------------------------------- */
 
-async function fetchJson(url, { token, timeoutMs = 20000 } = {}) {
-  const ctrl = new AbortController();
-  const timer = setTimeout(() => ctrl.abort(), timeoutMs);
-  const headers = { 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' };
-  if (token) headers['PRIVATE-TOKEN'] = token;
-  try {
-    const res = await fetch(url, { signal: ctrl.signal, headers, redirect: 'follow' });
-    return { ok: res.ok, status: res.status, text: await res.text() };
-  } finally {
-    clearTimeout(timer);
+async function fetchJson(url, { token, timeoutMs = 20000, maxAttempts = 3, onWait } = {}) {
+  let last = null;
+  for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), timeoutMs);
+    const headers = { 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' };
+    if (token) headers['PRIVATE-TOKEN'] = token;
+    try {
+      const res = await fetch(url, { signal: ctrl.signal, headers, redirect: 'follow' });
+      const text = await res.text();
+      last = { ok: res.ok, status: res.status, text };
+      // A 429 here used to surface as "repository unreachable", which told the
+      // user nothing and skipped every other mirror. Wait out the advertised
+      // delay instead of burning the whole candidate list on one throttled host.
+      if (res.status !== 429 || attempt === maxAttempts) return last;
+      const retryAfter = Number(res.headers.get('retry-after') || 0);
+      const waitMs = Math.min(60000, Math.max(3, retryAfter || 3 * attempt)) * 1000;
+      if (onWait) onWait({ reason: 'OTA_RATE_LIMITED', attempt, waitMs });
+      await new Promise((r) => setTimeout(r, waitMs));
+    } finally {
+      clearTimeout(timer);
+    }
   }
+  return last;
 }
 
 /**
